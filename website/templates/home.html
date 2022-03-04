@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- TITLE -->
+<h1>Live ISS video</h1>
+
+<!-- YOUTUBE FRAME -->
+<iframe
+  id="ytplayer"
+  src="https://www.youtube.com/embed/DDU-rZs-Ic4?autoplay=1&mute=1"
+  width="853"
+  height="480"
+  frameborder="0"
+  allowfullscreen
+  allow="autoplay; encrypted-media"
+></iframe>
+
+<!-- <div>
+  <p>{{code}}</p>
+</div> -->
+
+<!-- ISS LAT AND LOG DISPLAYED -->
+<div>
+  <p>ISS LATITUDE: {{lat}}</p>
+  <p>ISS LONGDITUDE: {{long}}</p>
+</div>
+
+<!-- COUNTRY DATA -->
+<div>
+  <p>CITY: {{name}}</p>
+  <p>{{admin1}}</p>
+  <p>COUNTRY CODE: {{cc}}</p>
+</div>
+
+<!-- PEOPLE IN SPACE  -->
+<div>
+  <p>{{ppl.number}}</p>
+</div>
+
+<!-- AST NAME AND CRAFT TABLE -->
+<table id="inSpace">
+  <tr>
+    {% for key in pplitr[0] %}
+    <th>{{ key }}</th>
+    {% endfor %}
+  </tr>
+
+  {% for per in pplitr %}
+  <tr>
+    {% for key in per %}
+    <td>{{ per[key] }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
+
+<!-- WORKING CODE -->
+<!-- <div>
+  {% for key, value in ppl['people'][0].items() %} {% if key == 'name' %}
+  <h1>Astro in space</h1>
+  <p>Key: {{key}}</p>
+  <p>Value: {{value}}</p>
+  {% endif %} {% endfor %}
+</div> -->
+
+<!-- <div>
+  <h1>Astro in space</h1>
+  {% for name in pplitr %}
+  <p>Key: {{name}}</p>
+  <p></p>
+  {% endfor %}
+</div> -->
+<!-- END WORKING CODE -->
