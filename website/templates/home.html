@@ -1,74 +1,135 @@
 {% extends "base.html" %} {% block content %}
 
-<!-- TITLE -->
-<h1>Live ISS video</h1>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-<!-- YOUTUBE FRAME -->
-<iframe
-  id="ytplayer"
-  src="https://www.youtube.com/embed/DDU-rZs-Ic4?autoplay=1&mute=1"
-  width="853"
-  height="480"
-  frameborder="0"
-  allowfullscreen
-  allow="autoplay; encrypted-media"
-></iframe>
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
 
-<!-- <div>
-  <p>{{code}}</p>
-</div> -->
+    .marker {
+      background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
 
-<!-- ISS LAT AND LOG DISPLAYED -->
-<div>
-  <p>ISS LATITUDE: {{lat}}</p>
-  <p>ISS LONGDITUDE: {{long}}</p>
-</div>
+<body>
+  <div id="map"></div>
 
-<!-- COUNTRY DATA -->
-<div>
-  <p>CITY: {{name}}</p>
-  <p>{{admin1}}</p>
-  <p>COUNTRY CODE: {{cc}}</p>
-</div>
+  <!-- TITLE -->
+  <h1>Live ISS video</h1>
 
-<!-- PEOPLE IN SPACE  -->
-<div>
-  <p>{{ppl.number}}</p>
-</div>
+  <!-- LIVESTREAM LINK -->
+  <iframe 
+    width="853" 
+    height="480" 
+    src="https://ustream.tv/embed/17074538?html5ui=1&volume=0&autoplay=true" 
+    scrolling="no" 
+    allowfullscreen
+    webkitallowfullscreen 
+    frameborder="0"
+    allow="autoplay; encrypted-media" 
+    style="border: 0 none transparent;">
+  </iframe>
 
-<!-- AST NAME AND CRAFT TABLE -->
-<table id="inSpace">
-  <tr>
-    {% for key in pplitr[0] %}
-    <th>{{ key }}</th>
+  <!-- AST NAME AND CRAFT TABLE -->
+  <table id="inSpace">
+    <tr>
+      <th>Craft</th>
+      <th>Name</th>
+    </tr>
+
+    {% for per in out %}
+    <tr>
+      {% for key in per %}
+      <td>{{ per[key] }}</td>
+      {% endfor %}
+    </tr>
     {% endfor %}
-  </tr>
+  </table>
 
-  {% for per in pplitr %}
-  <tr>
-    {% for key in per %}
-    <td>{{ per[key] }}</td>
-    {% endfor %}
-  </tr>
-  {% endfor %}
-</table>
+  <table id="inSpace">
+    <tr>
+      <th>ISS LAT</th>
+      <th>ISS LONG</th>
+      <th>countrie</th>
+      <th>closest city</th>
+      <th>reg</th>
+      <th>cap</th>
+      <th>lang</th>
+      <th>pop</th>
+    </tr>
+
+    <tr>
+      <td>{{ lat }}</td>
+      <td>{{ long }}</td>
+      <td>{{ cont }}</td>
+      <td>{{ name }}</td>
+      <td>{{ reg }}</td>
+      <td>{{ cap }}</td>
+      <td>{{ lang }}</td>
+      <td>{{ pop }}</td>
+    </tr>
+
+  </table>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibGlhbW9mdGhlZnVuayIsImEiOiJjbDBjZTNpMGQwNWpyM2tzNHNveXBpdTFjIn0.uwFSwJCyYceGQdfkA-93tA';
+
+  const geojson = {
+    'type': 'FeatureCollection',
+    'features': [
+      {
+        'type': 'Feature',
+        'geometry': {
+          'type': 'Point',
+          'coordinates': ['{{ long }}', '{{ lat }}']
+        },
+        'properties': {
+          'title': 'Mapbox',
+          'description': 'Washington, D.C.'
+        }
+      }
+    ]
+  };
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
+    center: [-96, 37.8],
+    zoom: 3
+  });
+
+  // add markers to map
+  for (const feature of geojson.features) {
+    // create a HTML element for each feature
+    const el = document.createElement('div');
+    el.className = 'marker';
+
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+  }
+
+
+
+</script>
+</body>
 
 {% endblock %}
-
-<!-- WORKING CODE -->
-<!-- <div>
-  {% for key, value in ppl['people'][0].items() %} {% if key == 'name' %}
-  <h1>Astro in space</h1>
-  <p>Key: {{key}}</p>
-  <p>Value: {{value}}</p>
-  {% endif %} {% endfor %}
-</div> -->
-
-<!-- <div>
-  <h1>Astro in space</h1>
-  {% for name in pplitr %}
-  <p>Key: {{name}}</p>
-  <p></p>
-  {% endfor %}
-</div> -->
-<!-- END WORKING CODE -->
