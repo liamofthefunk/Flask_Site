@@ -12,124 +12,271 @@
       padding: 0;
     }
 
+    /*  MAP CSS */
     #map {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
+      width: 50%;
+      height: 70%;
+    }
+
+    #map-container {
+      height: 270px;
     }
 
     .marker {
       background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
-      background-size: cover;
+      background-size: auto;
       width: 50px;
       height: 50px;
       border-radius: 50%;
       cursor: pointer;
     }
+
+    /* END MAP CSS */
+
+
+    /* CAROUSEL CSS */
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: Verdana, sans-serif;
+      margin: 0
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      position: relative;
+      background: #f1f1f1f1;
+    }
+
+    /* Slides */
+    .mySlides {
+      /* display: none; */
+      /* inline, block, initial, inherit, flex, grid*/
+      display: grid;
+      padding: 80px;
+      text-align: center;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -30px;
+      padding: 16px;
+      color: #888;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      position: absolute;
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+    }
+
+    /* The dot/bullet/indicator container */
+    .dot-container {
+      text-align: center;
+      padding: 20px;
+      background: #ddd;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    /* Add a background color to the active dot/circle */
+    .active,
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    /* Add an italic font style to all quotes */
+    q {
+      font-style: italic;
+    }
+
+    /* Add a blue color to the author */
+    .author {
+      color: cornflowerblue;
+    }
+
+    /* END CAROUSEL CSS */
   </style>
 </head>
 
 <body>
-  <div id="map"></div>
-
   <!-- TITLE -->
   <h1>Live ISS video</h1>
 
+
+
   <!-- LIVESTREAM LINK -->
-  <iframe 
-    width="853" 
-    height="480" 
-    src="https://ustream.tv/embed/17074538?html5ui=1&volume=0&autoplay=true" 
-    scrolling="no" 
-    allowfullscreen
-    webkitallowfullscreen 
-    frameborder="0"
-    allow="autoplay; encrypted-media" 
+  <iframe width="853" height="480" src="https://ustream.tv/embed/17074538?html5ui=1&volume=0&autoplay=true"
+    scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" allow="autoplay; encrypted-media"
     style="border: 0 none transparent;">
   </iframe>
 
-  <!-- AST NAME AND CRAFT TABLE -->
-  <table id="inSpace">
-    <tr>
-      <th>Craft</th>
-      <th>Name</th>
-    </tr>
+  <!-- CAROUSEL -->
+  <div class="slideshow-container">
 
-    {% for per in out %}
-    <tr>
-      {% for key in per %}
-      <td>{{ per[key] }}</td>
-      {% endfor %}
-    </tr>
-    {% endfor %}
-  </table>
+    <div class="mySlides">
+      <table id="inSpace">
+        <tr>
+          <th>Craft</th>
+          <th>Name</th>
+        </tr>
 
-  <table id="inSpace">
-    <tr>
-      <th>ISS LAT</th>
-      <th>ISS LONG</th>
-      <th>countrie</th>
-      <th>closest city</th>
-      <th>reg</th>
-      <th>cap</th>
-      <th>lang</th>
-      <th>pop</th>
-    </tr>
+        {% for per in out %}
+        <tr>
+          {% for key in per %}
+          <td>{{ per[key] }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
 
-    <tr>
-      <td>{{ lat }}</td>
-      <td>{{ long }}</td>
-      <td>{{ cont }}</td>
-      <td>{{ name }}</td>
-      <td>{{ reg }}</td>
-      <td>{{ cap }}</td>
-      <td>{{ lang }}</td>
-      <td>{{ pop }}</td>
-    </tr>
+    <div class="mySlides">
+      <table id="inSpace">
+        <tr>
+          <th>ISS LAT</th>
+          <th>ISS LONG</th>
+          <th>countrie</th>
+          <th>closest city</th>
+          <th>reg</th>
+          <th>cap</th>
+          <th>lang</th>
+          <th>pop</th>
+        </tr>
 
-  </table>
+        <tr>
+          <td>{{ lat }}</td>
+          <td>{{ long }}</td>
+          <td>{{ cont }}</td>
+          <td>{{ name }}</td>
+          <td>{{ reg }}</td>
+          <td>{{ cap }}</td>
+          <td>{{ lang }}</td>
+          <td>{{ pop }}</td>
+        </tr>
 
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoibGlhbW9mdGhlZnVuayIsImEiOiJjbDBjZTNpMGQwNWpyM2tzNHNveXBpdTFjIn0.uwFSwJCyYceGQdfkA-93tA';
+      </table>
+    </div>
 
-  const geojson = {
-    'type': 'FeatureCollection',
-    'features': [
-      {
-        'type': 'Feature',
-        'geometry': {
-          'type': 'Point',
-          'coordinates': ['{{ long }}', '{{ lat }}']
-        },
-        'properties': {
-          'title': 'Mapbox',
-          'description': 'Washington, D.C.'
+    <div class="mySlides">
+      <div id="map-container">
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+  </div>
+
+  <div class="dot-container">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <!-- <span class="dot" onclick="currentSlide(3)"></span> -->
+  </div>
+  <!-- END CAROUSEL -->
+
+
+
+  <script>
+    // MAP SCRIPT
+    mapboxgl.accessToken = 'pk.eyJ1IjoibGlhbW9mdGhlZnVuayIsImEiOiJjbDBjZTNpMGQwNWpyM2tzNHNveXBpdTFjIn0.uwFSwJCyYceGQdfkA-93tA';
+
+    const geojson = {
+      'type': 'FeatureCollection',
+      'features': [
+        {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': ['{{ long }}', '{{ lat }}']
+          },
+          'properties': {
+            'title': 'Mapbox',
+            'description': 'Washington, D.C.'
+          }
         }
+      ]
+    };
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [-96, 37.8],
+      zoom: 3
+    });
+
+    // add markers to map
+    for (const feature of geojson.features) {
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker';
+
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+    }
+    // END MAP SCRIPT
+
+    // CAROUSEL SCRIPT
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
       }
-    ]
-  };
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+        // END CAROUSEL SCRIPT
 
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v10',
-    center: [-96, 37.8],
-    zoom: 3
-  });
-
-  // add markers to map
-  for (const feature of geojson.features) {
-    // create a HTML element for each feature
-    const el = document.createElement('div');
-    el.className = 'marker';
-
-    // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
-  }
-
-
-
-</script>
+  </script>
 </body>
 
 {% endblock %}
