@@ -1,0 +1,7 @@
+- clean up layout
+- get markers working on map
+- pick final map zoom level
+- add facts to a json for one country as an example
+- decide on colours
+- make mobile friendly
+- look for way to test mobile version
