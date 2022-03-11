@@ -1,0 +1,5 @@
+ctrl shift m = mobile version of site on firefox
+
+france facts: https://easyscienceforkids.com/all-about-france/
+
+ui tool = https://www.fluidui.com/
