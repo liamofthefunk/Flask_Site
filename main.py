@@ -41,7 +41,7 @@ def map():
     reqcode = requests.get(urlpls)    
     code = json.loads(reqcode.content)
 
-    cont = code[0]['name']['official']
+    cont = code[0]['name']['common']
     reg = code[0]['region']
     
     cap = code[0]['capital']
