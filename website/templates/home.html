@@ -12,6 +12,9 @@
     href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
     rel="stylesheet"
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital@1&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -151,8 +154,8 @@
     <div class="mySlides">
       <table id="inSpace">
         <tr>
-          <th>Craft</th>
           <th>Name</th>
+          <th>Craft</th>
         </tr>
 
         {% for per in out %}
@@ -167,27 +170,6 @@
 
     <div class="mySlides">
       <table id="inSpace">
-        <!-- <tr>
-          <td>Latitude</td>
-          <td>Longitude</td>
-          <td>Country</td>
-          <td>Closest City</td>
-          <td>Region</td>
-          <td>Capital</td>
-          <td>Popular Spoken Languages</td>
-          <td>Population</td>
-        </tr> -->
-<!-- 
-        <tr>
-          <td>{{ lat }}</td>
-          <td>{{ long }}</td>
-          <td>{{ cont }}</td>
-          <td>{{ name }}</td>
-          <td>{{ reg }}</td>
-          <td>{{ cap }}</td>
-          <td>{{ langstrip }}</td>
-          <td>{{ pop }}</td>
-        </tr> -->
         <tr>
           <td>Latitude</td>
           <td>{{ lat }}</td>
