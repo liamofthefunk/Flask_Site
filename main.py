@@ -43,9 +43,18 @@ def map():
 
     cont = code[0]['name']['official']
     reg = code[0]['region']
+    
     cap = code[0]['capital']
+    captxt = ''.join(cap)
+    cap = captxt.strip()
+    
     lang = code[0]['languages']
+    for v in lang:
+        langstrip = lang[v]
+
     pop = code[0]['population']
+    pop = "{:,}".format(pop)
+
 
     ###
 
@@ -59,7 +68,7 @@ def map():
     pplitr = ppl['people']
     out = [x for x in pplitr if x['craft']=='ISS']
 
-    return render_template('home.html', pplitr=pplitr, lat=lat, long=long, name=name, cont=cont, reg=reg, cap=cap, lang=lang, pop=pop, out=out, urlmaploc=urlmaploc)
+    return render_template('home.html', pplitr=pplitr, lat=lat, long=long, name=name, cont=cont, reg=reg, cap=cap, langstrip=langstrip, pop=pop, out=out, urlmaploc=urlmaploc)
 
 if __name__ =='__main__':
     app.run(debug=True)

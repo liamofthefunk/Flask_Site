@@ -1,7 +1,19 @@
 - clean up layout
-- get markers working on map
-- pick final map zoom level
+- get markers working on map -- DONE 11/03
+-- working but need editing as image is cropped
+- pick final map zoom level -- DONE 11/03
 - add facts to a json for one country as an example
-- decide on colours
+- decide on colours -- DONE 14/04
 - make mobile friendly
-- look for way to test mobile version
+- look for way to test mobile version -- DONE 16/03 - firefox ctrl+shift+M
+- change ast table, from craft & name to nationality & name.
+- change info table, in mobile cant see all info. -- DONE 22/04
+- video iframe, adjust height depending on device, link in notes. -- DONE 16/03
+- add my details and socials to bottom of page/app loading screen or about page.
+- decide font and colour --DONE 14/04
+- alter map size --DONE 14/04
+- look into dragging carousel
+- decide page header
+- clean table layout 
+- refine json impoted to table --DONE 22/04
+- map loc is off when viewing in mobile mode
