@@ -132,7 +132,7 @@
 
 <body>
   <!-- TITLE -->
-  <h1>Live ISS video</h1>
+  <h1>Live ISS Video</h1>
 
   <!-- LIVESTREAM LINK -->
   <iframe
@@ -147,7 +147,6 @@
     style="border: 0 none transparent"
   >
   </iframe>
-  <!-- <iframe width="853" height="480" -->
 
   <!-- CAROUSEL -->
   <div class="slideshow-container">
@@ -157,7 +156,6 @@
           <th>Name</th>
           <th>Craft</th>
         </tr>
-
         {% for per in out %}
         <tr>
           {% for key in per %}
@@ -171,43 +169,36 @@
     <div class="mySlides">
       <table id="inSpace">
         <tr>
+          <td>Country</td>
+          <td>{{ cont }}</td>
+        </tr>
+        <tr>
+          <td>Closest City</td>
+          <td>{{ name }}</td>
+        </tr>
+        <tr>
           <td>Latitude</td>
           <td>{{ lat }}</td>
         </tr>
-
         <tr>
-        <td>Longitude</td>
-        <td>{{ long }}</td>
+          <td>Longitude</td>
+          <td>{{ long }}</td>
         </tr>
-
         <tr>
-        <td>Country</td>
-        <td>{{ cont }}</td>
+          <td>Region</td>
+          <td>{{ reg }}</td>
         </tr>
-
         <tr>
-        <td>Closest City</td>
-        <td>{{ name }}</td>
+          <td>Capital</td>
+          <td>{{ cap }}</td>
         </tr>
-
         <tr>
-        <td>Region</td>
-        <td>{{ reg }}</td>
+          <td>Spoken Languages</td>
+          <td>{{ langstrip }}</td>
         </tr>
-
         <tr>
-        <td>Capital</td>
-        <td>{{ cap }}</td>
-        </tr>
-
-        <tr>
-        <td>Popular Spoken Languages</td>
-        <td>{{ langstrip }}</td>
-        </tr>
-
-        <tr>
-        <td>Population</td>
-        <td>{{ pop }}</td>
+          <td>Population</td>
+          <td>{{ pop }}</td>
         </tr>
       </table>
     </div>
@@ -241,7 +232,7 @@
           type: "Feature",
           geometry: {
             type: "Point",
-            coordinates: ["{{ long }}", "{{ lat}}"],
+            coordinates: ["{{ long }}", "{{ lat }}"],
           },
           properties: {
             title: "ISS",
@@ -254,7 +245,7 @@
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/light-v10",
-      center: ["{{ long }}", "{{ lat}}"],
+      center: ["{{ long }}", "{{ lat }}"],
       zoom: 2,
     });
 

@@ -1,4 +1,3 @@
-
 from distutils.log import debug
 from flask import render_template, request
 from website import create_app
@@ -28,7 +27,6 @@ def map():
         if k == 'longitude':
             long=longv
 
-
     #### COORD LOC DATA
     coordinates = (lat,long)
     search = rg.search(coordinates)
@@ -55,12 +53,9 @@ def map():
     pop = code[0]['population']
     pop = "{:,}".format(pop)
 
-
     ###
-
     urlmap = "https://api.mapbox.com/styles/v1/liamofthefunk/cl0ce7ngt006314rr18ushz4r.html?title=false&access_token=pk.eyJ1IjoibGlhbW9mdGhlZnVuayIsImEiOiJjbDBjZTNpMGQwNWpyM2tzNHNveXBpdTFjIn0.uwFSwJCyYceGQdfkA-93tA&zoomwheel=false#3/"
     urlmaploc = urlmap + lat + "/" + long
-
 
     # ISS NUMBER
     reqppl = requests.get('http://api.open-notify.org/astros.json')
