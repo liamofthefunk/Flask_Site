@@ -1,7 +1,9 @@
 from distutils.log import debug
-from flask import render_template, request
+from flask import render_template, request, url_for
 from website import create_app
+from random import randint, randrange, random, choice
 
+import os
 import requests
 import json
 import reverse_geocoder as rg
@@ -10,6 +12,8 @@ import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
 app = create_app()
+
+
 @app.route('/', methods=['GET'])
 
 def map():
@@ -63,7 +67,20 @@ def map():
     pplitr = ppl['people']
     out = [x for x in pplitr if x['craft']=='ISS']
 
-    return render_template('home.html', pplitr=pplitr, lat=lat, long=long, name=name, cont=cont, reg=reg, cap=cap, langstrip=langstrip, pop=pop, out=out, urlmaploc=urlmaploc)
+    ## IMPORT FACTS AND ONLY GIVE ONE RANDOM FACT
+    def rand_fact():
+        ROOT = os.path.realpath(os.path.dirname(__file__))
+        json_url = os.path.join(ROOT,"website/static","fact.json")
+        factData = json.load(open(json_url))
+        randFact= factData[reg]['facts']
+        rand_search = choice(randFact)
+        return rand_search
+    print(rand_fact())
+    fact = rand_fact()   
 
+
+
+    return render_template('home.html', pplitr=pplitr, lat=lat, long=long, name=name, cont=cont, reg=reg, cap=cap, langstrip=langstrip, pop=pop, out=out, urlmaploc=urlmaploc, fact=fact)
+## SOME FACTS TAKEN FROM {"https://www.kids-world-travel-guide.com"}
 if __name__ =='__main__':
     app.run(debug=True)

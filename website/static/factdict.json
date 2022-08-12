@@ -1,0 +1,68 @@
+{
+  "Asia": [
+    {
+      "fact0": "Asia is home to three of the four most populated countries in the world, China 1st, India 2nd, and Indonesia 4th.(the United States of America is 3rd)"
+    },
+    { "fact1": "China produces 45 billion pairs of chopsticks each year." },
+    { "fact2": "There are over 1,600 temples in Kyoto, Japan." },
+    {
+      "fact3": "The Rafflesia, found growing on the forest floors of Malaysia, Thailand and Indonesia, produces the largest flower in the world."
+    }
+  ],
+  "Americas": [
+    {
+      "fact0": "Central America borders the Pacific Ocean and the Caribbean Sea of the Atlantic Ocean."
+    },
+    {
+      "fact1": "The United States of America is the 3rd most populated country in the world."
+    },
+    { "fact2": "The Amazon River Basin is the world's largest river basin." },
+    { "fact3": "The Andes are the world's longest mountain range." }
+  ],
+  "Africa": [
+    { "fact0": "There are 54 countries in Africa." },
+    {
+      "fact1": "Algeria is the largest country in africa. It is among the ten largest countries in the world."
+    },
+    {
+      "fact2": "The Nile is the longest river in the world and passes through eleven countries. It is 6,852 km/ 4,258 miles long."
+    },
+    {
+      "fact3": "Lake Victoria (bordering Uganda, Tanzania and Kenya) is also the world's second largest freshwater lake. Only Lake Superior in North America is bigger!"
+    }
+  ],
+  "Europe": [
+    {
+      "fact0": "There are 50 countries in Europe with a total of more than 748 million people living on the continent in 2021."
+    },
+    {
+      "fact1": "The European part of Russia covers more area than any other country. The three largest countries are: Russia, the Ukraine and France."
+    },
+    {
+      "fact2": "Vatican City is the smallest country not only in Europe, but also in the world. The city state, an enclave within Italy, is the smallest country both by population and by size."
+    },
+    {
+      "fact3": "According to the World Happiness Report from 2018 - 2020, the World's happiest people live in Finland - and they won for the last three years in a row!"
+    }
+  ],
+  "Oceania": [
+    {
+      "fact0": "Rugby is the most popular sport in the region. It is the national sport in New Zealand, Samoa, Tonga and Fiji."
+    },
+    {
+      "fact1": "Australian Indigenous rock art has the longest art tradition in the world. Aboriginal paintings in Arnhem Land date back more than 60,000 years and this art form is still practised by indigenous people in Australia."
+    },
+    {
+      "fact2": "Oceania is in a continental group consisting of 14 countries and includes Pacific islands and Australia. Often Australia is named as continent, but this means that the many islands and countries except Australia would then be not included. Oceania in fact is mostly ocean and spans a vast area."
+    },
+    {
+      "fact3": "Sydney in Australia has the most diverse and multicultural population in Oceania. More than 250 languages are spoken here."
+    }
+  ],
+  "Antarctic": [
+    { "fact0": "fact000" },
+    { "fact1": "fact111" },
+    { "fact2": "fact222" },
+    { "fact3": "fact333" }
+  ]
+}

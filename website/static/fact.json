@@ -1,0 +1,50 @@
+{
+  "Asia": {
+    "facts": [
+      "Asia is home to three of the four most populated countries in the world, China 1st, India 2nd, and Indonesia 4th.(the United States of America is 3rd)",
+      "China produces 45 billion pairs of chopsticks each year.",
+      "There are over 1,600 temples in Kyoto, Japan.",
+      "The Rafflesia, found growing on the forest floors of Malaysia, Thailand and Indonesia, produces the largest flower in the world"
+    ]
+  },
+  "Americas": {
+    "facts": [
+      "Central America borders the Pacific Ocean and the Caribbean Sea of the Atlantic Ocean.",
+      "The United States of America is the 3rd most populated country in the world.",
+      "The Amazon River Basin is the worlds largest river basin.",
+      "The Andes are the worlds longest mountain range."
+    ]
+  },
+  "Africa": {
+    "facts": [
+      "There are 54 countries in Africa.",
+      "Algeria is the largest country in africa. It is among the ten largest countries in the world.",
+      "The Nile is the longest river in the world and passes through eleven countries. It is 6,852 km/ 4,258 miles long.",
+      "Lake Victoria (bordering Uganda, Tanzania and Kenya) is also the worlds second largest freshwater lake. Only Lake Superior in North America is bigger!"
+    ]
+  },
+  "Europe": {
+    "facts": [
+      "There are 50 countries in Europe with a total of more than 748 million people living on the continent in 2021.",
+      "The European part of Russia covers more area than any other country. The three largest countries are: Russia, the Ukraine and France.",
+      "Vatican City is the smallest country not only in Europe, but also in the world. The city state, an enclave within Italy, is the smallest country both by population and by size.",
+      "According to the World Happiness Report from 2018 - 2020, the Worlds happiest people live in Finland - and they won for the last three years in a row!"
+    ]
+  },
+  "Oceania": {
+    "facts": [
+      "Rugby is the most popular sport in the region. It is the national sport in New Zealand, Samoa, Tonga and Fiji.",
+      "Australian Indigenous rock art has the longest art tradition in the world. Aboriginal paintings in Arnhem Land date back more than 60,000 years and this art form is still practised by indigenous people in Australia.",
+      "Oceania is in a continental group consisting of 14 countries and includes Pacific islands and Australia. Often Australia is named as continent, but this means that the many islands and countries except Australia would then be not included. Oceania in fact is mostly ocean and spans a vast area.",
+      "Sydney in Australia has the most diverse and multicultural population in Oceania. More than 250 languages are spoken here."
+    ]
+  },
+  "Antarctic": {
+    "facts": [
+      "According to size, Antarctica is the fifth largest continent of our planet. The continent is almost double the size of Australia!",
+      "Antarctica is the driest continent of the seven continents. Antarctica is an icy desert with very little rainfall throughout the year.",
+      "There are 18 countries who regularly send scientists and researchers to the various stations on the continent.",
+      "Antarctica contains more than 90% of the worlds ice and more than 90% of our planets fresh water."
+    ]
+  }
+}

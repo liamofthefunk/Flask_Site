@@ -3,3 +3,7 @@ ctrl shift m = mobile version of site on firefox
 france facts: https://easyscienceforkids.com/all-about-france/
 
 ui tool = https://www.fluidui.com/
+
+https://www.w3schools.com/howto/howto_css_responsive_iframes.asp
+
+https://app.testdome.com/t

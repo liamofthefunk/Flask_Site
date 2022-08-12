@@ -12,9 +12,12 @@
     href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
     rel="stylesheet"
   />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital@1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital@1&display=swap"
+    rel="stylesheet"
+  />
   <style>
     body {
       margin: 0;
@@ -25,22 +28,25 @@
     /*  MAP CSS */
     #map {
       position: absolute;
-      width: 50%;
-      height: 70%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
 
     #map-container {
-      height: 270px;
+      height: 500px;
+      width: 100%;
     }
-
     .marker {
       background-image: url("/static/PNG-images-Space-craft-4png.png");
       background-size: auto;
-      width: 50px;
-      height: 50px;
+      width: 185px;
+      height: 75px;
       border-radius: 100%;
       cursor: pointer;
     }
+
     /* END MAP CSS */
 
     /* CAROUSEL CSS */
@@ -57,6 +63,7 @@
     .slideshow-container {
       position: relative;
       background: #fef2da;
+      color: #4f5356;
     }
 
     /* Slides */
@@ -127,15 +134,29 @@
     }
 
     /* END CAROUSEL CSS */
+
+    /* BUTTON CSS */
+    .btn-group .button {
+      transition-duration: 0.4s;
+      border-radius: 12px;
+      padding: 14px 40px;
+      background-color: #ea583f; /* Red */
+      color: #4f5356; /* Charcoal */
+    }
+    .button:hover {
+      background-color: #90647b; /* Purple */
+      color: #fff4db; /* OffWhite */
+    }
   </style>
 </head>
 
 <body>
   <!-- TITLE -->
-  <h1>Live ISS Video</h1>
+  <h1>Around the world in 90 minutes.</h1>
 
   <!-- LIVESTREAM LINK -->
   <iframe
+    id="video"
     width="100%"
     height="400"
     src="https://ustream.tv/embed/17074538?html5ui=1&volume=0&autoplay=true"
@@ -145,27 +166,31 @@
     frameborder="0"
     allow="autoplay; encrypted-media"
     style="border: 0 none transparent"
-  >
-  </iframe>
+  ></iframe>
+  <div class="btn-group">
+    <button
+      class="button"
+      onclick="$('#video').attr('src','//www.youtube-nocookie.com/embed/21X5lGlDOfg')"
+    >
+      NASA LIVE
+    </button>
+    <button
+      class="button"
+      onclick="$('#video').attr('src','//ustream.tv/embed/17074538?html5ui=1&volume=0&autoplay=true')"
+    >
+      ISS OFFICIAL
+    </button>
+    <button
+      class="button"
+      onclick="$('#video').attr('src','//www.youtube-nocookie.com/embed/DDU-rZs-Ic4')"
+    >
+      SPACE (Official)
+    </button>
+  </div>
+  <p style="clear: both"><br /></p>
 
   <!-- CAROUSEL -->
   <div class="slideshow-container">
-    <div class="mySlides">
-      <table id="inSpace">
-        <tr>
-          <th>Name</th>
-          <th>Craft</th>
-        </tr>
-        {% for per in out %}
-        <tr>
-          {% for key in per %}
-          <td>{{ per[key] }}</td>
-          {% endfor %}
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-
     <div class="mySlides">
       <table id="inSpace">
         <tr>
@@ -204,6 +229,22 @@
     </div>
 
     <div class="mySlides">
+      <table id="inSpace">
+        <tr>
+          <th>Name</th>
+          <th>Craft</th>
+        </tr>
+        {% for per in out %}
+        <tr>
+          {% for key in per %}
+          <td>{{ per[key] }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="mySlides">
       <div id="map-container">
         <div id="map"></div>
       </div>
@@ -217,6 +258,7 @@
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
+    <!-- <span class="dot" onclick="currentSlide(4)"></span> -->
   </div>
   <!-- END CAROUSEL -->
 
@@ -236,7 +278,7 @@
           },
           properties: {
             title: "ISS",
-            description: "Current ISS Location",
+            description: "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
           },
         },
       ],
@@ -244,11 +286,12 @@
 
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/light-v10",
+      style: "mapbox://styles/mapbox/satellite-v9", // style URL
       center: ["{{ long }}", "{{ lat }}"],
       zoom: 2,
     });
 
+    /////////////////////////
     // add markers to map
     for (const feature of geojson.features) {
       // create a HTML element for each feature
@@ -256,9 +299,11 @@
       el.className = "marker";
 
       // make a marker for each feature and add to the map
+      var popup = new mapboxgl.Popup().setText("{{ fact }}").addTo(map);
       new mapboxgl.Marker(el)
         .setLngLat(feature.geometry.coordinates)
-        .addTo(map);
+        .addTo(map)
+        .setPopup(popup);
     }
     // END MAP SCRIPT
 
@@ -295,6 +340,9 @@
     }
     // END CAROUSEL SCRIPT
   </script>
+  <a href="https://www.flaticon.com/free-icons/globe" title="globe icons"
+    >Globe icons created by Freepik - Flaticon</a
+  >
 </body>
 
 {% endblock %}
